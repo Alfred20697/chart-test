@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Chart</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- style -->
+    <style>
+        .chart-size {
+            height: 150px;
+            width: 300px;
+        }
+
+        .chart {
+            margin-bottom: 40px;
+        }
+    </style>
+
+    <!-- script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script>
+        //horizontal bar chart
+        function getChart() {
+            var ctx = document.getElementById("myChart");
+            var config = {
+                type: 'horizontalBar',
+                data: {
+                    datasets: [{
+                        label: 'Expenses',
+                        data: [10, 0],
+                        backgroundColor: [
+                            'red'
+                        ],
+                        borderColor: [
+
+                        ],
+                        borderWidth: 1
+                    }, {
+                        label: 'Cash Flow',
+                        data: [15, 0],
+                        backgroundColor: [
+                            'yellow'
+                        ],
+                        borderColor: [
+
+                        ],
+                        borderWidth: 1
+                    }, {
+                        label: 'Passive Income',
+                        data: [10, 0],
+                        backgroundColor: [
+                            'green',
+                            'green'
+                        ],
+                        borderColor: [
+
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    elements: {
+                        rectangle: {
+                            borderWidth: 2
+                        }
+                    },
+                    responsive: true,
+                    // fullWidth: true,
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        labels: {
+                            boxWidth: 14
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Net Cash Flow',
+                        position: 'top'
+                    },
+                    scales: {
+                        xAxes: [{
+                            stacked: true,
+                            ticks: {
+                                beginAtZero: true
+                            },
+                            gridLines: {
+                                display: false
+                            }
+                        }],
+                        yAxes: [{
+                            stacked: true,
+                            barThickness: 10,
+                            maxBarThickness: 10,
+                            
+                        }]
+                    }
+                }
+            }
+            var myChart = new Chart(ctx, config);
+        }
+
+        //doughnut chart 1
+        function getChart2() {
+            var ctx = document.getElementById("myChart2");
+            var config = {
+                type: 'doughnut',
+                data: {
+                    labels: ['Fixed Deposit', 'Liquid Asset'],
+                    datasets: [{
+                        data: [75, 25],
+                        backgroundColor: [
+                            'green',
+                            'blue'
+                        ],
+                        borderColor: [
+
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    legend: {
+                        display: true,
+                        position: 'right',
+                        labels: {
+                            usePointStyle: true
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Cash On Hand'
+                    },
+                    cutoutPercentage: 70
+                }
+            }
+            var myChart = new Chart(ctx, config);
+        }
+
+        //doughnut chart 2
+        function getChart3() {
+            var ctx = document.getElementById("myChart3");
+            var config = {
+                type: 'doughnut',
+                data: {
+                    labels: ['Unit Trust', 'House', 'Share', 'Insurance', 'Share'],
+                    datasets: [{
+                        data: [
+                            70,
+                            30,
+                            20,
+                            10,
+                            5
+                        ],
+                        backgroundColor: [
+                            'blue',
+                            'green',
+                            'orange',
+                            'yellow',
+                            'red'
+                        ],
+                        borderColor: [
+
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    legend: {
+                        display: true,
+                        position: 'right',
+                        labels: {
+                            usePointStyle: true
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Your Capital'
+                    }
+                }
+            }
+            var myChart = new Chart(ctx, config);
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-4 chart">
+                <canvas id="myChart"></canvas>
+            </div>
+            <div class="col-sm-4 chart-size chart">
+                <canvas id="myChart2"></canvas>
+            </div>
+            <div class="col-sm-4 chart-size chart">
+                <canvas id="myChart3"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        getChart();
+        getChart2();
+        getChart3();
+    </script>
+</body>
+
+</html>
