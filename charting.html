@@ -6,21 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Chart</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <!-- style -->
-    <style>
-        .chart-size {
-            height: 150px;
-            width: 300px;
-        }
-
-        .chart {
-            margin-bottom: 40px;
-        }
-    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
     <!-- script -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
@@ -28,17 +16,17 @@
         //horizontal bar chart
         function getChart() {
             var ctx = document.getElementById("myChart");
+
+            //chart configuration
             var config = {
                 type: 'horizontalBar',
                 data: {
+                    // label, data, color
                     datasets: [{
                         label: 'Expenses',
                         data: [10, 0],
                         backgroundColor: [
                             'red'
-                        ],
-                        borderColor: [
-
                         ],
                         borderWidth: 1
                     }, {
@@ -47,31 +35,20 @@
                         backgroundColor: [
                             'yellow'
                         ],
-                        borderColor: [
-
-                        ],
                         borderWidth: 1
                     }, {
                         label: 'Passive Income',
                         data: [10, 0],
                         backgroundColor: [
                             'green',
-                            'green'
-                        ],
-                        borderColor: [
-
                         ],
                         borderWidth: 1
                     }]
                 },
+
+                //styling chart
                 options: {
-                    elements: {
-                        rectangle: {
-                            borderWidth: 2
-                        }
-                    },
                     responsive: true,
-                    // fullWidth: true,
                     legend: {
                         display: true,
                         position: 'top',
@@ -85,6 +62,7 @@
                         position: 'top'
                     },
                     scales: {
+                        //stacking data
                         xAxes: [{
                             stacked: true,
                             ticks: {
@@ -96,19 +74,21 @@
                         }],
                         yAxes: [{
                             stacked: true,
-                            barThickness: 10,
-                            maxBarThickness: 10,
-                            
+                            barThickness: 20,
                         }]
                     }
                 }
             }
+
+            //make chart
             var myChart = new Chart(ctx, config);
         }
 
         //doughnut chart 1
         function getChart2() {
             var ctx = document.getElementById("myChart2");
+
+            //chart configuration
             var config = {
                 type: 'doughnut',
                 data: {
@@ -119,9 +99,6 @@
                             'green',
                             'blue'
                         ],
-                        borderColor: [
-
-                        ],
                         borderWidth: 1
                     }]
                 },
@@ -131,22 +108,26 @@
                         display: true,
                         position: 'right',
                         labels: {
-                            usePointStyle: true
+                            usePointStyle: true //make legend round shape
                         }
                     },
                     title: {
                         display: true,
                         text: 'Cash On Hand'
                     },
-                    cutoutPercentage: 70
+                    cutoutPercentage: 70 //make doughnut width smalller
                 }
             }
+
+            //make chart
             var myChart = new Chart(ctx, config);
         }
 
         //doughnut chart 2
         function getChart3() {
             var ctx = document.getElementById("myChart3");
+
+            //chart configuration
             var config = {
                 type: 'doughnut',
                 data: {
@@ -166,9 +147,6 @@
                             'yellow',
                             'red'
                         ],
-                        borderColor: [
-
-                        ],
                         borderWidth: 1
                     }]
                 },
@@ -187,27 +165,32 @@
                     }
                 }
             }
+
+            //make chart
             var myChart = new Chart(ctx, config);
         }
     </script>
 </head>
 
 <body>
+    <!-- using bootstrap to wrap content -->
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-4 chart">
+            <!-- use col-lg, col-md, col-sm for stacking column -->
+            <div class="col-lg-4 col-md-8 col-sm-12">
                 <canvas id="myChart"></canvas>
             </div>
-            <div class="col-sm-4 chart-size chart">
+            <div class="col-lg-4 col-md-8 col-sm-12">
                 <canvas id="myChart2"></canvas>
             </div>
-            <div class="col-sm-4 chart-size chart">
+            <div class="col-lg-4 col-md-8 col-sm-12">
                 <canvas id="myChart3"></canvas>
             </div>
         </div>
     </div>
 
     <script>
+        // calling function
         getChart();
         getChart2();
         getChart3();
